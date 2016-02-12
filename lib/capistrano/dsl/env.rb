@@ -21,6 +21,10 @@ module Capistrano
         end
       end
 
+      def dry_run?
+        env.fetch(:sshkit_backend) == ::SSHKit::Backend::Printer
+      end
+
       def roles(*names)
         env.roles_for(names.flatten)
       end

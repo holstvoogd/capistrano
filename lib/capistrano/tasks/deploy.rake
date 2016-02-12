@@ -93,7 +93,7 @@ namespace :deploy do
         linked_files(shared_path).each do |file|
           unless test "[ -f #{file} ]"
             error t(:linked_file_does_not_exist, file: file, host: host)
-            exit 1
+            exit 1 unless dry_run?
           end
         end
       end
